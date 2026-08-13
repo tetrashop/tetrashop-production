@@ -1,62 +1,144 @@
-# 🚀 Tetrashop Unified System
+# Tetrashop Production
 
-ساختار فایل‌های سیستم یکپارچه:
+<div align="center">
 
-## 📁 ساختار پروژه
-# بررسی نهایی
-cd ~/tetrashop-unified-system
-find . -type f -name "*.js" -o -name "*.html" -o -name "*.json" -o -name "*.toml" -o -name "*.md" -o -name "*.sh"
-# ایجاد پوشه اصلی و ساختار
-mkdir -p ~/tetrashop-unified-system
-cd ~/tetrashop-unified-system
+![Project Type](https://img.shields.io/badge/Type-E-commerce / Marketplace-blue)
+![Status](https://img.shields.io/badge/status-active-success)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-# سپس هر کدام از دستورات cat بالا را اجرا کن
-# یا از اسکریپت setup-system.sh استفاده کن
-# بررسی فایل‌های ایجاد شده
-cd ~/tetrashop-unified-system
-find . -type f -name "*.*" | sort
-# ایجاد ساختار اصلی
-mkdir -p ~/tetrashop-unified-system/{frontend,backend,deployment}
-mkdir -p ~/tetrashop-unified-system/frontend/{gateway,shop,admin}
-mkdir -p ~/tetrashop-unified-system/backend/{api,services}
-mkdir -p ~/tetrashop-unified-system/deployment/{cloudflare,config}
+**بخشی از اکوسیستم TetraShop**
 
-# ایجاد فایل اصلی Worker
-cat > ~/tetrashop-unified-system/deployment/cloudflare/unified-worker.js << 'EOF'
-export default {
-    async fetch(request, env, ctx) {
-        const router = {
-            '/': () => new Response(this.getHomePage(), { headers: { 'Content-Type': 'text/html; charset=utf-8' } }),
-            '/shop': () => new Response(this.getShopPage(), { headers: { 'Content-Type': 'text/html; charset=utf-8' } }),
-            '/api/status': () => new Response(JSON.stringify({ status: 'active', system: 'Tetrashop Unified' }), { headers: { 'Content-Type': 'application/json' } })
-        };
+</div>
 
-        const url = new URL(request.url);
-        const handler = router[url.pathname];
-        
-        if (handler) return handler();
-        return new Response('مسیر پیدا نشد', { status: 404 });
-    },
+---
 
-    getHomePage() {
-        return `<!DOCTYPE html>
-<html dir="rtl">
-<head><meta charset="UTF-8"><title>تست سیستم</title></head>
-<body>
-    <h1>✅ سیستم یکپارچه Tetrashop</h1>
-    <p>آزمایش اولیه موفقیت‌آمیز بود!</p>
-</body>
-</html>`;
-    },
+## 📋 چکیده
 
-    getShopPage() {
-        return `<!DOCTYPE html>
-<html dir="rtl">
-<head><meta charset="UTF-8"><title>فروشگاه</title></head>
-<body>
-    <h1>🛍️ فروشگاه Tetrashop</h1>
-    <p>سیستم فروشگاه فعال است</p>
-</body>
-</html>`;
-    }
-}
+یک پلتفرم تجارت الکترونیک کامل با قابلیت مدیریت محصولات، پرداخت آنلاین، و تحلیل رفتار مشتریان. این پروژه با معماری میکروسرویس و امنیت بالا توسعه یافته است.
+
+### 🎯 اهداف پروژه
+
+- ✅ ارائه یک راه‌حل کارآمد در حوزه **E-commerce / Marketplace**
+- ✅ پیاده‌سازی با استفاده از بهترین روش‌های مهندسی نرم‌افزار
+- ✅ ایجاد کد تمیز، ماژولار و قابل نگهداری
+- ✅ مستندسازی کامل برای سهولت استفاده و مشارکت
+
+---
+
+## 🏗️ معماری پروژه
+
+### ساختار کلی
+
+```
+tetrashop-production/
+├── src/           # کدهای منبع اصلی
+│   ├── core/      # ماژول‌های اصلی
+│   ├── utils/     # توابع کمکی
+│   └── config/    # تنظیمات
+├── tests/         # تست‌های واحد و یکپارچه
+├── docs/          # مستندات فنی
+├── scripts/       # اسکریپت‌های ابزار
+├── README.md      # مستندات پروژه
+├── LICENSE        # مجوز
+└── .gitignore     # فایل‌های نادیده‌گرفته
+```
+
+### الگوی طراحی
+
+- **معماری:** لایه‌ای (Layered Architecture)
+- **الگوی اصلی:** MVC / Microservices
+- **مدیریت وابستگی:** Dependency Injection
+
+---
+
+## 🚀 نصب و راه‌اندازی
+
+### پیش‌نیازها
+
+- - محیط توسعه مناسب\n- Git
+
+### نصب
+
+```bash
+# کلون مخزن
+git clone https://github.com/tetrashop/tetrashop-production.git
+cd tetrashop-production
+
+# نصب وابستگی‌ها
+# دستورات نصب بستگی به نوع پروژه دارد
+
+# اجرای پروژه
+# دستور اجرا بستگی به نوع پروژه دارد
+```
+
+---
+
+## 📖 راهنمای استفاده
+
+### شروع سریع
+
+```bash
+# کد نمونه برای شروع کار
+```
+
+---
+
+## 🧪 تست
+
+```bash
+# اجرای تست‌ها
+# دستور تست بستگی به نوع پروژه دارد
+```
+
+---
+
+## 🐛 مشکلات شناخته‌شده و راه‌حل‌ها
+
+### مشکل ۱: خطای نصب وابستگی‌ها
+**راه‌حل:** 
+```bash
+# پاک کردن کش و نصب مجدد
+# پاک کردن کش و نصب مجدد
+```
+
+### مشکل ۲: خطای حافظه
+**راه‌حل:** افزایش حافظه اختصاص‌یافته یا استفاده از swap.
+
+---
+
+## 🤝 مشارکت در توسعه
+
+1. **Fork** کردن مخزن
+2. ایجاد **Branch** جدید: `git checkout -b feature/your-feature`
+3. **Commit** تغییرات: `git commit -m 'Add amazing feature'`
+4. **Push** به Branch: `git push origin feature/your-feature`
+5. باز کردن **Pull Request**
+
+### قوانین مشارکت
+
+- ✅ رعایت استانداردهای کدنویسی
+- ✅ نوشتن تست برای کدهای جدید
+- ✅ به‌روزرسانی مستندات
+- ✅ استفاده از Conventional Commits
+
+---
+
+## 📝 مجوز
+
+این پروژه تحت مجوز **MIT License** منتشر شده است.
+
+---
+
+## 🌐 ارتباط با تیم
+
+- **وبسایت:** [tetrashop.ir](https://tetrashop.ir)
+- **گیت‌هاب:** [github.com/tetrashop](https://github.com/tetrashop)
+- **ایمیل:** info@tetrashop.ir
+
+---
+
+<div align="center">
+  <sub>ساخته شده با ❤️ توسط تیم TetraShop</sub>
+  <br>
+  <sub>آخرین به‌روزرسانی: 2026-08-13 17:33</sub>
+</div>
