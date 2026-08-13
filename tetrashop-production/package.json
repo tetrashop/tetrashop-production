@@ -1,16 +1,26 @@
 {
-  "name": "tetrashop-worker",
+  "name": "tetrashop-production",
   "version": "1.0.0",
-  "description": "Tetrashop API Worker",
-  "main": "cloudflare-worker.js",
+  "description": "A TetraShop Node.js project",
+  "main": "index.js",
   "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js"
   },
   "dependencies": {
-    "itty-router": "^4.0.0"
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
-    "wrangler": "^3.0.0"
-  }
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "eslint": "^8.40.0"
+  },
+  "author": "TetraShop",
+  "license": "MIT"
 }
